@@ -20,6 +20,20 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "error",
+    },
+  },
+
+  // EXCEPTION: allow (or warn) in API routes only
+  {
+    files: ["app/api/**/*.ts", "pages/api/**/*.ts"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off", // or "warn"
+    },
+  },
 ];
 
 export default eslintConfig;
