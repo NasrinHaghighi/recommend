@@ -89,16 +89,15 @@ const [isLoading, setIsLoading] = useState(false);
               body: JSON.stringify({ keys: imageQueries }),
             });
             const { images }: { images: ImageResult[] } = await imageRes.json(); // { images: [{ key, imageUrl }] }
-
             // 3. Map image results
             const imageMap = new Map(images.map((img) => [img.key, img.imageUrl]));
-
+           
             // 4. Enrich laptops
             const enriched = laptops.map((item) => ({
               ...item,
               imageUrl: imageMap.get(item.imageQuery) || "", // fallback to empty string if not found
             }));
-           // console.log("🚀 Enriched laptops with images:", enriched);
+           console.log("🚀 Enriched laptops with images:", enriched);
             setAiResults(enriched); // ✅ Set parsed data
             setStep(4); // move to results
           } catch (e) {

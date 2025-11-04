@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  console.log("🚀 /api/images received keys:",);
+  
   try {
     const { keys } = await req.json(); // expecting { keys: [...] }
 
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
         const res = await fetch(url);
         const data = await res.json();
-console.log("🚀 Image search data for", key, data.items[0].link);
+
         const imageUrl = data.items?.[0]?.link || null;
 
         return {

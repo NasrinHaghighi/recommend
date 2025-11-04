@@ -22,24 +22,7 @@ export default function ProductCard({ item, index }: Props) {
       {/* تصویر */}
      
 
-      <div className="relative aspect-[16/9] bg-zinc-50">
-    <Image
-      src={item.imageUrl}
-      alt={`${item.brand} ${item.model}`}
-      fill
-      className="object-cover"
-      sizes="(max-width: 768px) 100vw, 33vw"
-    />
-        {/* امتیاز تطابق */}
-        <div className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-zinc-900 shadow">
-          Match {Math.round(item.match)}%
-        </div>
-        {typeof index === "number" && (
-          <div className="absolute top-3 right-3 rounded-full bg-zinc-900/90 px-2.5 py-1 text-xs font-semibold text-white">
-            #{index + 1}
-          </div>
-        )}
-      </div>
+      
 
       {/* محتوا */}
       <div className="p-5">
@@ -138,3 +121,25 @@ export default function ProductCard({ item, index }: Props) {
     </article>
   );
 }
+
+
+
+{/* <div className="relative aspect-[16/9] bg-zinc-50">
+      {item.imageUrl ? 
+    <Image
+      src={item.imageUrl}
+      alt={`${item.brand} ${item.model}`}
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 100vw, 33vw"
+    />: ''}
+        {/* امتیاز تطابق */}
+      //   <div className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-zinc-900 shadow">
+      //     Match {Math.round(item.match)}%
+      //   </div>
+      //   {typeof index === "number" && (
+      //     <div className="absolute top-3 right-3 rounded-full bg-zinc-900/90 px-2.5 py-1 text-xs font-semibold text-white">
+      //       #{index + 1}
+      //     </div>
+      //   )}
+      // </div> */}
