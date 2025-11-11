@@ -42,23 +42,10 @@ export default function ProductCard({ item }: Props) {
       aria-label={`${item.brand} ${item.model}`}
     >
       {/* Image */}
-      <div className="grid grid-cols-2 gap-4 h-32 md:h-48 lg:h-56">
-           <div className="relative aspect-[4/3] md:aspect-auto md:h-full bg-zinc-50 col-span-1">
-        {hasImage ? (
-          <Image
-            src={item.imageUrl!}
-            alt={`${item.brand} ${item.model}`}
-            fill
-            className="object-contain p-4"
-            sizes="(max-width: 768px) 100vw, 220px"
-            priority={false}
-          />
-        ) : (
-          <div className="h-full w-full grid place-items-center text-zinc-400">No image</div>
-        )}
-      </div>
-   <header className=" gap-4 col-span-1 m-auto">
-          <h3 className="md:text-lg text-md  font-semibold text-zinc-900">
+      
+      
+   <header className="  m-auto flex max-w-md items-center justify-between gap-4 border-b border-zinc-200/60 bg-zinc-50 p-4">
+          <h3 className="md:text-lg text-md text-center font-semibold text-zinc-900">
             {item.brand} <span className="font-normal">•</span> {item.model}
           </h3>
           {bestPrice && (
@@ -67,7 +54,7 @@ export default function ProductCard({ item }: Props) {
             </div>
           )}
         </header>
-      </div>
+   
    
 
       {/* Content */}
