@@ -8,7 +8,7 @@ import { IoMdCash } from "react-icons/io";
 //import { GiProcessor } from "react-icons/gi";
 import { FaTrademark } from "react-icons/fa";
 import { FaFlagCheckered } from "react-icons/fa";
-import type { LaptopFormData } from "../../utiles/types";
+import type { LaptopFormData } from "../../utile/types";
 
 interface Step {
   id: number;

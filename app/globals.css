@@ -11,6 +11,28 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-2 font-medium rounded px-6 py-2 transition-all duration-150 ease-in-out focus:outline-none
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-next {
+    @apply bg-white text-black border border-transparent;
+  }
+  .btn-next:hover {
+    background: #ddccf3;
+    @apply border-black;
+  }
+  .btn-next:focus-visible {
+    @apply ring-2 ring-[color:var(--foreground)] ring-offset-2;
+  }
+  .btn-next .icon {
+    @apply size-4 transition-transform duration-150 ease-in-out;
+  }
+  .group:hover .btn-next .icon {
+    @apply translate-x-0.5;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

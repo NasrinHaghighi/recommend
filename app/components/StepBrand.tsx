@@ -1,8 +1,9 @@
 'use client';
 
 
-import { LaptopFormData } from "@/utiles/types";
+import { LaptopFormData } from "@/utile/types";
 import React, { useState } from "react";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 
 interface StepBrandProps {
@@ -55,17 +56,33 @@ const StepBrand: React.FC<StepBrandProps> = ({
         {selected.length === 0 && (
           <span className="text-black/50 text-sm">No brand selected</span>
         )}
-        {selected.map((brand) => (
-          <span
-            key={brand}
-            className="flex items-center gap-1 bg-white text-black px-3 py-1 rounded-full text-xs"
-          >
-            {brand}
-            <button onClick={() => removeBrand(brand)}>
-              <IoClose size={14} />
-            </button>
-          </span>
-        ))}
+     <ul className="flex flex-wrap gap-2">
+  {selected.map((brand) => (
+    <li key={brand}>
+      <span
+       className="inline-flex items-center gap-2 rounded-full
+             bg-[--chip-bg] text-[--chip-fg] px-3 py-1 text-sm
+             ring-1 ring-black/10 shadow-sm
+             hover:shadow-md hover:-translate-y-0.5
+             transition duration-200 ease-out
+             focus-within:ring-2 focus-within:ring-black"
+      >
+        <span className="max-w-[10rem] truncate">{brand}</span>
+
+        <button
+          type="button"
+          onClick={() => removeBrand(brand)}
+          className="grid h-5 w-5 place-items-center rounded-full
+                     hover:bg-black/10 focus:outline-none
+                     focus-visible:ring-2 focus-visible:ring-black"
+          aria-label={`Remove ${brand}`}
+        >
+          <IoClose className="h-3.5 w-3.5" aria-hidden="true" />
+        </button>
+      </span>
+    </li>
+  ))}
+</ul>
       </div>
 
       {/* Dropdown Select */}
@@ -73,7 +90,7 @@ const StepBrand: React.FC<StepBrandProps> = ({
         <select
           onChange={(e) => toggleBrand(e.target.value)}
           value=""
-          className="w-full bg-black/10 text-black px-4 py-2 rounded border border-white/30"
+          className="w-full border-black/30 bg-white/5 transition-all duration-75 ease-in-out hover:border-white  hover:bg-opacity-30  text-black px-4 py-2 rounded-xl border "
         >
           <option value="" disabled>
             Select a brand
@@ -90,17 +107,25 @@ const StepBrand: React.FC<StepBrandProps> = ({
       <div className="mt-6 flex justify-between">
         <button
           onClick={prevStep}
-          className="border border-white text-white py-2 px-6 rounded hover:bg-white/10"
+          className="group btn btn-next"
         >
+           <BsArrowLeft
+                        className="size-4 transition-transform duration-150 ease-in-out group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
           Back
         </button>
 
         <button
           onClick={handleNext}
           disabled={selected.length === 0}
-          className="bg-white text-black font-medium py-2 px-6 rounded hover:bg-white/90 disabled:opacity-40"
+          className="group btn btn-next"
         >
           Submit
+           <BsArrowRight
+                        className="size-4 transition-transform duration-150 ease-in-out group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
         </button>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import type { Laptop } from "@/utiles/types";
+import type { Laptop } from "@/utile/types";
 import ProductCard from "./ProductCard";
 
 

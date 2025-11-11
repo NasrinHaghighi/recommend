@@ -1,27 +1,8 @@
-import { LaptopFormData, UsageType} from "@/utiles/types";
+import {  UsageType, StepUsageProps} from "@/utile/types";
 import React, { useState } from "react";
+import { BsArrowRight } from "react-icons/bs";
 
-
-
-
-interface StepUsageProps {
-  nextStep: (data: { usage: UsageType[] }) => void;
-  defaultData?: Partial<LaptopFormData>;
-}
-
-const usageOptions: { label: string; value: UsageType }[] = [
-  { label: "Gaming", value: "gaming" },
-  { label: "Office Work", value: "office" },
-  { label: "Design / UI", value: "design" },
-  { label: "General Use", value: "general" },
-  { label: "Programming", value: "programming" },
-  { label: "Video Editing", value: "video editing" },
-  { label: "Student / Study", value: "student" },
-  { label: "3D Modeling / CAD", value: "3d modeling" },
-  { label: "Content Creation", value: "content creation" },
-  { label: "Business Travel", value: "business travel" },
-  { label: "Music Production", value: "music production" },
-];
+ 
 
 
 const StepUsage: React.FC<StepUsageProps> = ({ nextStep, defaultData }) => {
@@ -54,27 +35,48 @@ const toggleSelection = (value: UsageType) => {
   onClick={() => toggleSelection(option.value)}
   className={`p-3 rounded-xl border text-center transition-all ${
     selected.includes(option.value)
-      ? "border-black bg-white/10 backdrop-blur-md ring-2 ring-white"
-      : "border-black/30 bg-white/5 hover:border-white/60"
+      ? "border-black bg-[#DCCFF3] backdrop-blur-md ring-2 ring-white font-semibold"
+      : "border-black/30 bg-white/5 transition-all duration-75 ease-in-out hover:border-white hover:bg-[#DCCFF3] hover:bg-opacity-30 "
   }`}
 >
-  {option.label}
+{option.icon} {" "} {option.label}
 </button>
 
         ))}
       </div>
 
-      <div className="mt-6">
-        <button
-          onClick={handleNext}
-          disabled={!selected}
-          className="bg-white text-black font-medium py-2 px-6 rounded hover:bg-white/90 disabled:opacity-40"
-        >
-          Next
-        </button>
+      <div className="mt-6 mx-auto">
+     <button
+  type="button"
+  onClick={handleNext}
+  disabled={!selected}
+  aria-disabled={!selected}
+  className="group btn btn-next"
+>
+  Next
+  <BsArrowRight
+    className="size-4 transition-transform duration-150 ease-in-out group-hover:translate-x-0.5"
+    aria-hidden="true"
+  />
+</button>
       </div>
     </div>
   );
 };
 
 export default StepUsage;
+
+
+const usageOptions: { label: string; value: UsageType; icon:string}[] = [
+  { label: "Gaming", value: "gaming", icon: "🎮" },
+  { label: "Office Work", value: "office", icon: "💼" },
+  { label: "Design / UI", value: "design", icon : "🎨" },
+  { label: "General Use", value: "general", icon: "💻" },
+  { label: "Programming", value: "programming" , icon: "👨‍💻"},
+  { label: "Video Editing", value: "video editing" , icon: "🎬" },
+  { label: "Student / Study", value: "student" , icon: "📚" },
+  { label: "3D Modeling / CAD", value: "3d modeling", icon: "🛠️"  },
+  { label: "Content Creation", value: "content creation", icon: "📸"  },
+  { label: "Business Travel", value: "business travel", icon: "✈️"  },
+  { label: "Music Production", value: "music production", icon: "🎵"  },
+];

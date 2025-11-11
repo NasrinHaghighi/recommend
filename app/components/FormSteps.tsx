@@ -5,13 +5,13 @@
 import { useEffect, useState } from "react";
 
 
-import type { LaptopFormData } from "../../utiles/types";
+import type { LaptopFormData } from "../../utile/types";
 import StepCarousel from "./StepCarousel";
 import StepUsage from "./StepUsage";
 import StepBudget from "./StepBuget";
 import StepBrand from "./StepBrand";
 import StepResult from "./StepResult";
-import type { Laptop } from "@/utiles/types";
+import type { Laptop } from "@/utile/types";
 import { GridLoader  } from "react-spinners";
 
 interface CSSProperties {
@@ -134,7 +134,7 @@ const [isLoading, setIsLoading] = useState(false);
       <div className="max-w-xl mx-auto p-6 rounded bg-glass    my-10 text-center">
         <p className=" text-lg mb-5">Generating recommendations...</p>
          <GridLoader 
-        color="#0faedf"
+        color="#8b7f9b"
         loading={isLoading}
         cssOverride={override}
         size={30}
@@ -152,6 +152,7 @@ const [isLoading, setIsLoading] = useState(false);
       
 
       {/* Step 1: Usage */}
+      <div className="px-5">
             {step === 1 && (
             <StepUsage nextStep={nextStep} defaultData={formData} />
             )}
@@ -171,7 +172,7 @@ const [isLoading, setIsLoading] = useState(false);
             <StepResult aiResults={aiResults}/>
             )}
 
-
+</div>
           </div>
   );
 }

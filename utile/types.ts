@@ -67,3 +67,9 @@ export function bestAvailablePrice(p1?: string, p2?: string) {
   return null;
 }
 
+
+export interface StepUsageProps {
+  nextStep: (data: { usage: UsageType[] }) => void;
+  defaultData?: Partial<LaptopFormData>;
+}
+
